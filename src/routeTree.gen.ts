@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CreditRouteImport } from './routes/credit'
+import { Route as EmiRouteImport } from './routes/emi'
+import { Route as LoanRouteImport } from './routes/loan'
+import { Route as TipsRouteImport } from './routes/tips'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreditRoute = CreditRouteImport.update({
+  id: '/credit',
+  path: '/credit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmiRoute = EmiRouteImport.update({
+  id: '/emi',
+  path: '/emi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanRoute = LoanRouteImport.update({
+  id: '/loan',
+  path: '/loan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TipsRoute = TipsRouteImport.update({
+  id: '/tips',
+  path: '/tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/credit': typeof CreditRoute
+  '/emi': typeof EmiRoute
+  '/loan': typeof LoanRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/credit': typeof CreditRoute
+  '/emi': typeof EmiRoute
+  '/loan': typeof LoanRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/credit': typeof CreditRoute
+  '/emi': typeof EmiRoute
+  '/loan': typeof LoanRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/credit' | '/emi' | '/loan' | '/tips'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/credit' | '/emi' | '/loan' | '/tips'
+  id: '__root__' | '/' | '/credit' | '/emi' | '/loan' | '/tips'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CreditRoute: typeof CreditRoute
+  EmiRoute: typeof EmiRoute
+  LoanRoute: typeof LoanRoute
+  TipsRoute: typeof TipsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/credit': {
+      id: '/credit'
+      path: '/credit'
+      fullPath: '/credit'
+      preLoaderRoute: typeof CreditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emi': {
+      id: '/emi'
+      path: '/emi'
+      fullPath: '/emi'
+      preLoaderRoute: typeof EmiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan': {
+      id: '/loan'
+      path: '/loan'
+      fullPath: '/loan'
+      preLoaderRoute: typeof LoanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tips': {
+      id: '/tips'
+      path: '/tips'
+      fullPath: '/tips'
+      preLoaderRoute: typeof TipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CreditRoute: CreditRoute,
+  EmiRoute: EmiRoute,
+  LoanRoute: LoanRoute,
+  TipsRoute: TipsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
