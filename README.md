@@ -97,3 +97,9 @@ The project demonstrates a complete educational finance workflow: users can expl
 ## Educational disclaimer
 
 All outputs are educational estimates. They are not bank approvals, loan offers, credit reports, or financial advice.
+
+## Project Documentation
+
+Click below to view the complete project documentation.
+
+[View Project Documentation] https://drive.google.com/file/d/1ga0TXQKVZFHzBAXY7G25_z--tiYbNtaY/view?usp=sharing
